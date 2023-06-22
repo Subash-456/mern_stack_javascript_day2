@@ -1,0 +1,210 @@
+//PALINDROME PROGRAM
+
+let string=prompt('Enter a string:');
+checkPalindrome(string);
+
+function checkPalindrome(string){
+    let arrayvalues=string.split('');
+    let reverseArrayVAlues=arrayvalues.reverse();
+    let reversestring=reverseArrayVAlues.join('');
+    if(string==reversestring)
+    {
+        console.log('It is a palindrome');
+    }
+    else{
+        console.log('It is not a palindrome');
+    }
+}
+
+//for of loop
+let aa=[1,2,3,4,5];
+for(let key of aa){
+    console.log(key);
+}
+
+//for in loop
+//for in loop gives the index values
+let obj2 = {
+    a:1,
+    b:2,
+    c:3
+}
+for(let key in obj2){
+    console.log(key,obj2[key]);
+}
+//another program
+let abc=[1,2,3,4,5];
+for(let key in abc)
+{
+    console.log(key);
+}
+
+//array callback methods
+let sece1=["vijay","suriya","kamal","rajini"];
+let num_arr=[1,2,3,4,5,6,7,8,9,10];
+//for each loop
+//for arrow function in for each if we give one argument brackets() are optional
+//for more than one argument () are compulsory
+num_arr.forEach((ele)=> {
+    console.log(ele*ele);
+})
+
+//map() does the same work of for each loop but returns the solution in array
+//we should not print we want to return when we use curly braces{} to return answer in array
+let suba = sece1.map(ele => {
+    return ele;
+
+})
+console.log(suba);
+
+//filter
+let ans_filter = num_arr.filter(ele => {
+
+    return !(ele%2);
+})
+console.log(ans_filter);
+
+//Task
+//o/p:{'ajay','bala','suriya'}
+let names_obj=[
+    {
+        name : "vijay",
+        dob : 2002
+    },
+    {
+        name : "ajay",
+        dob : 2003
+    },
+    {
+        name : "Bala",
+        dob : 2004
+    },
+    {
+        name : "Surya",
+        dob : 2005
+    }
+];
+//using map and filter
+let ans_filter1=names_obj.filter(ele => ele.dob > 2002);
+let names = ans_filter1.map(ele => ele.name);
+console.log(names);
+//alternate method
+let ans_filter2=names_obj.filter(ele => ele.dob>=2003).map(ele => ele.name);
+console.log(ans_filter2);
+
+//shallow copy
+const array=[1,2,3,4,5];
+const array27=array;
+array[2]=200;
+console.log(array,array27);
+//deep copy
+//copy of array is created
+//array is modified
+const array29=[1,2,3,4,5];
+const array28=[...array];
+array28[2]=200;
+console.log(array29,array28);
+//
+const obj_cp ={
+    name:"sece",
+    year:2003,
+    name:"sri"//it overwrites the sece
+}
+console.log(obj_cp)
+
+//Another Task
+const employee = [
+    {
+        name:"vijay",
+        age:12,
+        salary:26000
+    },
+    {
+        name:"ajay",
+        age:17,
+        salary:22000
+    },
+    {
+        name:"asaz",
+        age:22,
+        salary:28000
+    },
+    {
+        name:"ayax",
+        age:56,
+        salary:30000
+    }
+];
+let ans_filter3=employee.filter(ele => ele.salary > 25000);
+let names23=ans_filter3.map(ele => ({name:ele.name,age:ele.age}));
+console.log(names23);
+
+//De-structuring --> unpacking elements
+
+let arr_name = [10,20,30,40,50,60,70];
+let [a1,b1,c1,d1,e1]=arr_name;
+console.log(a1,b1,c1,d1,e1);
+//
+let arr_name2 = [10,20,30,40,50,60];
+let [aaa,bbb,ccc,ddd,...eee]=arr_name2;//rest operator stores the remaining values in eee
+console.log(eee);
+//
+let arr_nums = [10,20,30,40,50,60,70,80,90,100];
+let [a11, a22, ,a33, a44, ...a55]=arr_nums;
+console.log(a11,a22,a33,a44,a55);
+
+//de-structuring object elements :
+let obj_1 = {
+    clg:"sece",
+    year:2021,
+    city:"cbe",
+    dept:"cse",
+    lpa:"75LPA"
+};
+let {clg,year,city, ...remaining}=obj_1;
+console.log(clg,year,city,remaining);
+
+//setTimeout() function
+
+setTimeout(() => console.log('dgsgdg'),7000);
+//it displays the output 7000ms after(7 sec)
+
+//setInterval()
+setInterval( () => console. log('Hello every 3 seconds'), 3000 ); 
+
+//promise
+//state = pending, resolve, reject;
+
+const mob = fetch('https://jsonplaceholder.typicode.com/todos/');
+mob
+.then(response => response.json())
+.then((data)=>console.log(data))
+.catch((error)=>{console.log('error',error)});
+console.log(mob);
+
+//
+const promisex = new Promise((resolve,reject) => {
+    setTimeout(()=>{
+        resolve('resolved')//resolve
+    },4000)
+})
+
+promisex
+.then((value) => console.log(value))//pending
+.catch(() => console.log('error'));//reject
+
+//
+const apicall = async() => {
+    try
+    {
+       const promise_from_api = await fetch('https://jsonplaceholder.typicode.com/todos');
+       const data = await promise_from_api.json();
+       console.log(data);
+    }
+    catch(error)
+    {
+        console.log('Error');
+    }
+    
+};
+apicall();
